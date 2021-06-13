@@ -5,6 +5,7 @@ import QtQuick.Controls 2.0
 Item {
     id: root
     anchors.fill: parent
+    property int currentIndex: leftContent.currentIndex
 
     TabBar {
         id: leftContent
@@ -22,22 +23,15 @@ Item {
         }
 
         TabButton {
-            background: PressButton {
-                text: "Онлайн"
-            }
+            text: "Онлайн"
         }
 
         TabButton {
-            background: PressButton {
-                text: "Планирование"
-            }
+            text: "Планирование"
         }
 
         TabButton {
-            background: PressButton {
-
-                text: "Симуляция"
-            }
+            text: "Симуляция"
         }
     }
 

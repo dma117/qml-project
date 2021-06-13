@@ -1,5 +1,6 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
+import QtQuick.Layouts 1.3
 
 Window {
     id: root
@@ -11,22 +12,47 @@ Window {
 
     Item {
         id: header
+        z: 1
         width: parent.width
         height: 60
         anchors.top: parent.top
 
         NavPanel {
+            id: navigation
             anchors.margins: 7
         }
     }
 
-    Rectangle {
+    StackLayout {
+        z: 0
         id: mainContent
-        width: parent.width
-        height: parent.height - 60
-        color: "red"
-        anchors {
-            bottom: parent.bottom
+        anchors.fill: parent
+
+        currentIndex: navigation.currentIndex
+
+        Item {
+            id: first
+
+            Rectangle {
+                anchors.fill: parent
+                color: "pink"
+            }
+        }
+
+        Item {
+            id: second
+            Rectangle {
+                anchors.fill: parent
+                color: "yellow"
+            }
+        }
+
+        Item {
+            id: third
+            Rectangle {
+                anchors.fill: parent
+                color: "brown"
+            }
         }
     }
 }
