@@ -9,6 +9,7 @@ Item {
     height: 200
     property string title: ""
 
+
     Rectangle {
         id: topRect
         width: root.width
