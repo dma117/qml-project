@@ -2,6 +2,9 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>NavPanel.qml</file>
-        <file>PressButton.qml</file>
+        <file>MButton.qml</file>
+        <file>MTabButton.qml</file>
+        <file>images/settings.png</file>
+        <file>images/plus.png</file>
     </qresource>
 </RCC>

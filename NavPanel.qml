@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.3
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.0
 
@@ -9,28 +9,20 @@ Item {
 
     TabBar {
         id: leftContent
+        anchors.left: parent.left
         width: 500
         spacing: 5
+        background: Rectangle { color: "transparent" }
 
-        anchors {
-            left: parent.left
-        }
-
-
-
-        background: Rectangle {
-            color: "transparent"
-        }
-
-        TabButton {
+        MTabButton {
             text: "Онлайн"
         }
 
-        TabButton {
+        MTabButton {
             text: "Планирование"
         }
 
-        TabButton {
+        MTabButton {
             text: "Симуляция"
         }
     }
@@ -38,16 +30,24 @@ Item {
 
     RowLayout {
         id: rightContent
-        anchors {
-            right: parent.right
+        anchors.right: parent.right
+
+        MButton {
+            implicitWidth: leftContent.height
+            implicitHeight: leftContent.height
+             contentItem: Image {
+                 anchors.fill: parent
+                 source: "images/plus.png"
+             }
         }
 
-        PressButton {
-            text: "Плюсик"
-        }
-
-        PressButton {
-            text: "Шестерёнка"
+       MButton {
+           implicitWidth: leftContent.height
+           implicitHeight: leftContent.height
+            contentItem: Image {
+                anchors.fill: parent
+                source: "images/settings.png"
+            }
         }
     }
 }
