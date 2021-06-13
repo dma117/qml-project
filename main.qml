@@ -8,6 +8,6 @@ Window {
     title: qsTr("Hello World")
 
     ContentBox {
-
+        title: "Данные корабля"
     }
 }
