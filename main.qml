@@ -54,5 +54,4 @@ Window {
                 color: "brown"
             }
         }
-    }
 }

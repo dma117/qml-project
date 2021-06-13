@@ -6,5 +6,6 @@
         <file>MTabButton.qml</file>
         <file>images/settings.png</file>
         <file>images/plus.png</file>
+        <file>ContentBox.qml</file>
     </qresource>
 </RCC>
