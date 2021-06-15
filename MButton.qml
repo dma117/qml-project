@@ -5,15 +5,21 @@ Button {
     id: control
 
     contentItem: Text {
-        text: qsTr("Button")
-    }
+             text: control.text
+             font: control.font
+             opacity: enabled ? 1.0 : 0.3
+             color: "#000"
+             horizontalAlignment: Text.AlignHCenter
+             verticalAlignment: Text.AlignVCenter
+             elide: Text.ElideRight
+         }
 
-    background: Rectangle {
-        implicitWidth: control.width
-        implicitHeight: control.height
-        opacity: enabled ? 1 : 0.3
-        border.width: 1
-        border.color: "#000"
-        color: control.down ? "lightgray" : "#fff"
-    }
+         background: Rectangle {
+             implicitHeight: 40
+             opacity: enabled ? 1 : 0.3
+             color: control.down ? "lightgray" : "#fff"
+             border.color: "#000"
+             border.width: 1
+             radius: 2
+         }
 }

@@ -3,7 +3,6 @@ import QtQuick.Controls 2.0
 
 TabButton {
     id: control
-    text: "Button"
     font.bold: focus ? true : false
 
     contentItem: Text {

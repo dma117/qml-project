@@ -14,17 +14,9 @@ Item {
         spacing: 5
         background: Rectangle { color: "transparent" }
 
-        MTabButton {
-            text: "Онлайн"
-        }
-
-        MTabButton {
-            text: "Планирование"
-        }
-
-        MTabButton {
-            text: "Симуляция"
-        }
+        MTabButton { text: "Онлайн" }
+        MTabButton { text: "Планирование" }
+        MTabButton { text: "Симуляция" }
     }
 
 
