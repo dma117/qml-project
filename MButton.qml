@@ -6,8 +6,14 @@ Button {
     property bool transparent: false
 
     contentItem: Text {
-        text: qsTr("Button")
-    }
+             text: control.text
+             font: control.font
+             opacity: enabled ? 1.0 : 0.3
+             color: "#000"
+             horizontalAlignment: Text.AlignHCenter
+             verticalAlignment: Text.AlignVCenter
+             elide: Text.ElideRight
+         }
 
     background: Rectangle {
         implicitWidth: control.width

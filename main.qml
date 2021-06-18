@@ -1,13 +1,14 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Layouts 1.3
+import QtQuick.Controls 2.5
 
 Window {
     id: root
     minimumWidth: 1080
     minimumHeight: 720
     visible: true
-    title: qsTr("Hello World")
+    title: qsTr("QMLProject")
     color: "blue"
 
     Item {
@@ -49,6 +50,40 @@ Window {
             Rectangle {
                 anchors.fill: parent
                 color: "yellow"
+
+                MContainer {
+                    id: cont
+                    //anchors.centerIn: parent
+                    title: "Управление АНПА"
+
+                    Rectangle {
+                        id: content1
+                        width: 200
+                        height: 250
+                        color: "pink"
+
+                        ComboBox {
+                            currentIndex: -1
+                            model: ["First", "Second", "Third"]
+                            displayText: currentIndex != -1 ? currentText : "Выбрать команду"
+
+                            anchors.left: parent.left
+                            anchors.right: parent.right
+                        }
+
+                        CheckBox {
+                            text: "Постоянная отправка"
+                            anchors.centerIn: parent
+                        }
+
+                        MButton {
+                            text: "Отправить"
+                            anchors.bottom: content1.bottom
+                            anchors.right: content1.right
+                        }
+                    }
+                }
+
             }
         }
 
