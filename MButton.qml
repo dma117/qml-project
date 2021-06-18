@@ -3,6 +3,7 @@ import QtQuick.Controls 2.0
 
 Button {
     id: control
+    property bool transparent: false
 
     contentItem: Text {
         text: qsTr("Button")
@@ -12,8 +13,8 @@ Button {
         implicitWidth: control.width
         implicitHeight: control.height
         opacity: enabled ? 1 : 0.3
-        border.width: 1
+        border.width: transparent ? 0 : 1
         border.color: "#000"
-        color: control.down ? "lightgray" : "#fff"
+        color: control.down ? "lightgray" : (transparent ? "transparent" : "#fff")
     }
 }

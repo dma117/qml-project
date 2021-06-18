@@ -36,6 +36,11 @@ Window {
             Rectangle {
                 anchors.fill: parent
                 color: "pink"
+
+                ContentBox {
+                   anchors.centerIn: parent
+                   title: "Данные корабля"
+                }
             }
         }
 
@@ -54,4 +59,5 @@ Window {
                 color: "brown"
             }
         }
+    }
 }
