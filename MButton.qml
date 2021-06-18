@@ -3,6 +3,7 @@ import QtQuick.Controls 2.0
 
 Button {
     id: control
+    property bool transparent: false
 
     contentItem: Text {
              text: control.text
@@ -14,12 +15,12 @@ Button {
              elide: Text.ElideRight
          }
 
-         background: Rectangle {
-             implicitHeight: 40
-             opacity: enabled ? 1 : 0.3
-             color: control.down ? "lightgray" : "#fff"
-             border.color: "#000"
-             border.width: 1
-             radius: 2
-         }
+    background: Rectangle {
+        implicitWidth: control.width
+        implicitHeight: control.height
+        opacity: enabled ? 1 : 0.3
+        border.width: transparent ? 0 : 1
+        border.color: "#000"
+        color: control.down ? "lightgray" : (transparent ? "transparent" : "#fff")
+    }
 }

@@ -1,6 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-
+#include "shipdata.h"
 
 int main(int argc, char *argv[])
 {
@@ -9,6 +9,9 @@ int main(int argc, char *argv[])
 #endif
 
     QGuiApplication app(argc, argv);
+
+    ShipData shipData;
+    qmlRegisterType<ShipData>("ShipData", 1, 0, "ShipDataModel");
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));

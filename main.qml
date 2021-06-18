@@ -38,6 +38,10 @@ Window {
                 anchors.fill: parent
                 color: "pink"
 
+                ContentBox {
+                   anchors.centerIn: parent
+                   title: "Данные корабля"
+                }
             }
         }
 
