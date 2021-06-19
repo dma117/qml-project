@@ -23,7 +23,7 @@ Rectangle {
     Rectangle {
         id: containerHead
         width: container.width
-        height: container.height / 3
+        height: titleText.height * 3
         color: "gainsboro"
         anchors.top: parent.top
         z: 100
@@ -34,11 +34,50 @@ Rectangle {
         }
 
         Text {
-            text: container.title
-            anchors.centerIn: containerHead
+            id: offset
+            text:  "  "
+            anchors {
+                verticalCenter: containerHead.verticalCenter
+            }
             font.pointSize: 10
             font.bold: true
         }
+
+        Text {
+            id: titleText
+            text: offset.text + container.title
+            anchors {
+                verticalCenter: containerHead.verticalCenter
+            }
+            font.pointSize: 10
+            font.bold: true
+        }
+
+        MButton {
+            implicitWidth: titleText.height * 2
+            implicitHeight: titleText.height * 2
+            transparent: true
+            anchors {
+                verticalCenter: titleText.verticalCenter
+                right: containerHead.right
+                rightMargin: {
+                    var availableOffset = ((containerHead.width - titleText.width -
+                                          containerHead.border.width * 4)- width) / 2;
+
+                    if (availableOffset < 0) {
+                        containerHead.border.width;
+                    } else {
+                        Math.min(offset.width, availableOffset);
+                    }
+                }
+            }
+
+            contentItem: Image {
+                fillMode: Image.PreserveAspectFit
+                anchors.fill: parent
+                source: "images/settings.png"
+            }
+         }
     }
 
     Rectangle {
