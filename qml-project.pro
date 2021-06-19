@@ -10,6 +10,7 @@ SOURCES += \
         auvdata.cpp \
         factory.cpp \
         main.cpp \
+        movable_object.cpp \
         shipdata.cpp
 
 RESOURCES += qml.qrc
@@ -28,4 +29,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     auvdata.h \
     factory.h \
+    movable_object.h \
     shipdata.h
