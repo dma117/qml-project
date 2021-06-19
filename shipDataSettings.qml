@@ -12,6 +12,7 @@ ApplicationWindow {
     minimumWidth: 300
 
     property string titleWindow: "Настройки"
+    property var currentModel
     title: titleWindow
 
     Rectangle {
@@ -34,9 +35,7 @@ ApplicationWindow {
             width: parent.width
             height: parent.height
 
-            dataModel: ShipDataModel {
-                displayedData: ShipData { }
-            }
+            dataModel: currentModel
 
             dataDelegate: ContentBoxSettingsDelegate { }
         }

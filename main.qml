@@ -46,6 +46,8 @@ Window {
                         width: 250
                         height: 200
 
+                        id: box
+
                         dataModel: ShipDataModel {
                             displayedData: ShipData { }
                         }
@@ -55,10 +57,10 @@ Window {
 
                     onSettingsClickedAction: function() {
                         var window = Qt.createQmlObject("ShipDataSettings {
-                                        titleWindow: 'Настройки данных корабля'}",
+                                        titleWindow: 'Настройки данных корабля'
+                                        currentModel: box.dataModel}",
                                         mainContent);
 
-                        console.log("sobaka");
                     }
                 }
             }
@@ -72,7 +74,6 @@ Window {
 
                 MContainer {
                     id: cont
-                    //anchors.centerIn: parent
                     title: "Управление АНПА"
 
                     Rectangle {
