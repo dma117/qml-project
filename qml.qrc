@@ -11,5 +11,7 @@
         <file>ContentBox.qml</file>
         <file>ShipDataModel.qml</file>
         <file>ContentBoxDelegate.qml</file>
+        <file>ShipDataSettings.qml</file>
+        <file>ContentBoxSettingsDelegate.qml</file>
     </qresource>
 </RCC>

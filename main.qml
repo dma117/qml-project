@@ -52,6 +52,14 @@ Window {
 
                         dataDelegate: ContentBoxDelegate { }
                     }
+
+                    onSettingsClickedAction: function() {
+                        var window = Qt.createQmlObject("ShipDataSettings {
+                                        titleWindow: 'Настройки данных корабля'}",
+                                        mainContent);
+
+                        console.log("sobaka");
+                    }
                 }
             }
         }

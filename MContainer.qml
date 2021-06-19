@@ -1,10 +1,12 @@
 import QtQuick 2.0
 import QtQml 2.12
+import QtQuick.Controls 2.5
 
 Rectangle {
     id: container
     property string title: qsTr('')
     default property alias content: contentWrapper.children
+    property var onSettingsClickedAction
 
     Binding {
         target: container;
@@ -20,7 +22,7 @@ Rectangle {
         delayed: true;
     }
 
-    Rectangle {
+    Rectangle {  
         id: containerHead
         width: container.width
         height: titleText.height * 3
@@ -54,6 +56,7 @@ Rectangle {
         }
 
         MButton {
+            id: settingsButton
             implicitWidth: titleText.height * 2
             implicitHeight: titleText.height * 2
             transparent: true
@@ -77,6 +80,8 @@ Rectangle {
                 anchors.fill: parent
                 source: "images/settings.png"
             }
+
+            onClicked: onSettingsClickedAction()
          }
     }
 

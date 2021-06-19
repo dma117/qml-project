@@ -7,8 +7,8 @@ ListModel {
     property ShipData displayedData
 
     Component.onCompleted: {
-        append({name: "Курс:", value: displayedData.direction.toFixed(2), units: "°"})
-        append({name: "Скорость вперед:", value: displayedData.forwardSpeed.toFixed(2), units: "м/с"})
-        append({name: "Скорость вправо:", value: displayedData.rightSpeed.toFixed(2), units: "м/с"})
+        append({name: "Курс", value: displayedData.direction.toFixed(2), units: "°"})
+        append({name: "Скорость вперед", value: displayedData.forwardSpeed.toFixed(2), units: "м/с"})
+        append({name: "Скорость вправо", value: displayedData.rightSpeed.toFixed(2), units: "м/с"})
     }
 }

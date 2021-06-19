@@ -5,7 +5,7 @@ import QtQml 2.12
 Component {
     Flow {
         Text {
-            text: name
+            text: name + ':'
             font.pointSize: 9
         }
         Text {
