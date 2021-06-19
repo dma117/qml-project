@@ -2,6 +2,7 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.5
+import ShipData 1.0
 
 Window {
     id: root
@@ -38,9 +39,19 @@ Window {
                 anchors.fill: parent
                 color: "pink"
 
-                ContentBox {
-                   anchors.centerIn: parent
-                   title: "Данные корабля"
+                MContainer {
+                    title: "Данные коробля"
+
+                    ContentBox {
+                        width: 250
+                        height: 200
+
+                        dataModel: ShipDataModel {
+                            displayedData: ShipData { }
+                        }
+
+                        dataDelegate: ContentBoxDelegate { }
+                    }
                 }
             }
         }

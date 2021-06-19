@@ -8,5 +8,8 @@
         <file>images/plus.png</file>
         <file>ManageBlock.qml</file>
         <file>MContainer.qml</file>
+        <file>ContentBox.qml</file>
+        <file>ShipDataModel.qml</file>
+        <file>ContentBoxDelegate.qml</file>
     </qresource>
 </RCC>

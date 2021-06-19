@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     ShipData shipData;
-    qmlRegisterType<ShipData>("ShipData", 1, 0, "ShipDataModel");
+    qmlRegisterType<ShipData>("ShipData", 1, 0, "ShipData");
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));
