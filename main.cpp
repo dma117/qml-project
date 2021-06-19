@@ -1,5 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
+#include <movable_object.h>
 #include "shipdata.h"
 
 int main(int argc, char *argv[])
@@ -12,6 +14,10 @@ int main(int argc, char *argv[])
 
     ShipData shipData;
     qmlRegisterType<ShipData>("ShipData", 1, 0, "ShipDataModel");
+
+    movable_object ship_object;
+    qmlRegisterType<movable_object>("movable_object", 1, 0, "Moveable");
+
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));

@@ -3,6 +3,8 @@ import QtQuick.Window 2.12
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.5
 
+import movable_object 1.0;
+
 Window {
     id: root
     minimumWidth: 1080
@@ -28,6 +30,7 @@ Window {
         z: 0
         id: mainContent
         anchors.fill: parent
+
 
         currentIndex: navigation.currentIndex
 
@@ -92,6 +95,46 @@ Window {
             Rectangle {
                 anchors.fill: parent
                 color: "brown"
+
+                Moveable {
+                    id: ship
+                    onXPositionChanged: animationX.start()
+                    onYPositionChanged: animationY.start()
+                }
+
+                MouseArea {
+                    id: mouse
+                    anchors.fill: parent
+                    hoverEnabled: true
+
+                    onPositionChanged: {
+                        moveable.xPosition = mouseX
+                        moveable.yPosition = mouseY
+                    }
+                }
+
+                Rectangle {
+                    id: box
+                    width: 100
+                    height: 100
+                    x: 150
+                    y: 150
+
+                    NumberAnimation on x {
+                        id: animationX
+                        duration: 300
+                        to: moveable.xPosition
+                    }
+
+                    NumberAnimation on y {
+                        id: animationY
+                        duration: 300
+                        to: moveable.yPosition
+                    }
+
+                    Ship {}
+                }
+
             }
         }
     }
