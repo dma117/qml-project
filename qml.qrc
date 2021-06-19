@@ -11,8 +11,9 @@
         <file>ContentBox.qml</file>
         <file>ShipDataModel.qml</file>
         <file>ContentBoxDelegate.qml</file>
-        <file>ShipDataSettings.qml</file>
+        <file>ContentBoxSettings.qml</file>
         <file>ContentBoxSettingsDelegate.qml</file>
         <file>Ship.qml</file>
+        <file>AUVDataModel.qml</file>
     </qresource>
 </RCC>

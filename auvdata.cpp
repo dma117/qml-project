@@ -3,20 +3,24 @@
 
 AUVData::AUVData(QObject *parent) : QObject(parent)
 {
+  m_height = 10;
+  m_deep = 7;
+  m_deep = 1;
+  m_direction = 89;
 }
 
-float AUVData::high() const
+float AUVData::height() const
 {
-    return m_high;
+    return m_height;
 }
 
-void AUVData::setHigh(float newHigh)
+void AUVData::setHeight(float newHeight)
 {
-    if (m_high == newHigh)
+    if (m_height == newHeight)
         return;
 
-    m_high = newHigh;
-    emit highChanged(m_high);
+    m_height = newHeight;
+    emit heightChanged(m_height);
 }
 
 float AUVData::deep() const

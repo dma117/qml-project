@@ -3,8 +3,8 @@ import QtQuick.Window 2.12
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.5
 import ShipData 1.0
-
 import movable_object 1.0;
+import AUVData 1.0
 
 Window {
     id: root
@@ -43,13 +43,15 @@ Window {
                 color: "pink"
 
                 MContainer {
+                    x: 30
+                    y: 80
                     title: "Данные коробля"
 
                     ContentBox {
                         width: 250
                         height: 200
 
-                        id: box
+                        id: dataShipBox
 
                         dataModel: ShipDataModel {
                             displayedData: ShipData { }
@@ -59,9 +61,36 @@ Window {
                     }
 
                     onSettingsClickedAction: function() {
-                        var window = Qt.createQmlObject("ShipDataSettings {
+                        var window = Qt.createQmlObject("ContentBoxSettings {
                                         titleWindow: 'Настройки данных корабля'
-                                        currentModel: box.dataModel}",
+                                        currentModel: dataShipBox.dataModel}",
+                                        mainContent);
+
+                    }
+                }
+
+                MContainer {
+                    x: root.width - dataAUVBox.width - 40
+                    y: 80
+                    title: "Данные АНПА"
+
+                    ContentBox {
+                        width: 250
+                        height: 200
+
+                        id: dataAUVBox
+
+                        dataModel: AUVDataModel {
+                            displayedData: AUVData { }
+                        }
+
+                        dataDelegate: ContentBoxDelegate { }
+                    }
+
+                    onSettingsClickedAction: function() {
+                        var window = Qt.createQmlObject("ContentBoxSettings {
+                                        titleWindow: 'Настройки данных корабля'
+                                        currentModel: dataAUVBox.dataModel}",
                                         mainContent);
 
                     }
@@ -128,13 +157,12 @@ Window {
                     hoverEnabled: true
 
                     onPositionChanged: {
-                        moveable.xPosition = mouseX
-                        moveable.yPosition = mouseY
+                        ship.xPosition = mouseX
+                        ship.yPosition = mouseY
                     }
                 }
 
                 Rectangle {
-                    id: box
                     width: 100
                     height: 100
                     x: 150
@@ -143,13 +171,13 @@ Window {
                     NumberAnimation on x {
                         id: animationX
                         duration: 300
-                        to: moveable.xPosition
+                        to: ship.xPosition
                     }
 
                     NumberAnimation on y {
                         id: animationY
                         duration: 300
-                        to: moveable.yPosition
+                        to: ship.yPosition
                     }
 
                     Ship {}

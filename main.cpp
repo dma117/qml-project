@@ -3,6 +3,7 @@
 #include <QQmlContext>
 #include "movable_object.h"
 #include "shipdata.h"
+#include "auvdata.h"
 
 int main(int argc, char *argv[])
 {
@@ -14,6 +15,9 @@ int main(int argc, char *argv[])
 
     ShipData shipData;
     qmlRegisterType<ShipData>("ShipData", 1, 0, "ShipData");
+
+    AUVData auvData;
+    qmlRegisterType<AUVData>("AUVData", 1, 0, "AUVData");
 
     movable_object ship_object;
     qmlRegisterType<movable_object>("movable_object", 1, 0, "Moveable");
