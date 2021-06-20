@@ -160,16 +160,9 @@ Window {
                 anchors.fill: parent
                 color: "brown"
 
-                Moveable {
-                    id: ship
-                    onXPositionChanged: animationX.start()
-                    onYPositionChanged: animationY.start()
-                }
-
                 MouseArea {
                     id: mouse
                     anchors.fill: parent
-                    hoverEnabled: true
 
                     onPositionChanged: {
                         ship.xPosition = mouseX
@@ -178,26 +171,39 @@ Window {
                 }
 
                 Rectangle {
+                    onClicked: {
+                        shipSprite.movable_component.xPosition = mouseX
+                        shipSprite.movable_component.yPosition = mouseY
+                    }
+                }
+
+                PathView {
+                    z: 1
+                    id: directionLine
+                    path: Path {
+                        startX: shipSprite.xPrevPos
+                        startY: shipSprite.yPrevPos
+                        PathLine {
+                            x: shipSprite.xPos;
+                            y: shipSprite.yPos;
+                        }
+                    }
+                    model: 50
+                    delegate: Rectangle {
+                        width: 4; height: 4
+                        color: "green"
+                    }
+                }
+
+
+                Ship {
+                    id: shipSprite
+
                     width: 100
                     height: 100
                     x: 150
                     y: 150
-
-                    NumberAnimation on x {
-                        id: animationX
-                        duration: 300
-                        to: ship.xPosition
-                    }
-
-                    NumberAnimation on y {
-                        id: animationY
-                        duration: 300
-                        to: ship.yPosition
-                    }
-
-                    Ship {}
                 }
-
             }
         }
     }
