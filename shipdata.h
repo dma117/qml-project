@@ -14,7 +14,7 @@ class ShipData : public QObject
   public:
     explicit ShipData(QObject *parent = nullptr);
 
-    float direction() const;
+    float direction();
     float rightSpeed() const;
     float forwardSpeed() const;
 

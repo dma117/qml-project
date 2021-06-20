@@ -1,5 +1,6 @@
 #include "shipdata.h"
 #include <QVariant>
+#include <iostream>
 
 ShipData::ShipData(QObject *parent) : QObject(parent)
 {
@@ -36,9 +37,15 @@ void ShipData::setRightSpeed(float newRightSpeed)
   emit rightSpeedChanged(m_rightSpeed);
 }
 
-float ShipData::direction() const
+float ShipData::direction()
 {
-  return m_direction;
+  auto tmp = m_direction;
+
+  setDirection(++m_direction);
+
+  std::cout << m_direction;
+
+  return tmp;
 }
 
 void ShipData::setDirection(float newDirection)

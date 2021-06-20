@@ -8,6 +8,7 @@ CONFIG += c++11
 
 SOURCES += \
         auvdata.cpp \
+        auvdatacontrol.cpp \
         factory.cpp \
         main.cpp \
         movable_object.cpp \
@@ -28,6 +29,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     auvdata.h \
+    auvdatacontrol.h \
     factory.h \
     movable_object.h \
     shipdata.h

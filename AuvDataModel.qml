@@ -4,7 +4,7 @@ import QtQml.Models 2.12
 import QtQuick.Layouts 1.12
 
 ListModel {
-    property AUVData displayedData
+    readonly property AUVData displayedData : AUVData { }
 
     Component.onCompleted: {
         append({name: "Высота", value: displayedData.height.toFixed(2), units: "м", chosen: true})

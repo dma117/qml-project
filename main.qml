@@ -5,6 +5,7 @@ import QtQuick.Controls 2.5
 import ShipData 1.0
 import movable_object 1.0;
 import AUVData 1.0
+import AUVDataControl 1.0
 
 Window {
     id: root
@@ -53,11 +54,15 @@ Window {
 
                         id: dataShipBox
 
-                        dataModel: ShipDataModel {
-                            displayedData: ShipData { }
-                        }
+                        dataModel: ShipDataModel { }
 
-                        dataDelegate: ContentBoxDelegate { }
+                        dataDelegate: ContentBoxDelegate {
+//                           view.model.setProperty(index, "value", value * 2);
+//                           MouseArea {
+//                               anchors.fill: parent
+//                              onContainsMouseChanged: ListView.model.setProperty(index, "value", value * 2)
+//                           }
+                        }
                     }
 
                     onSettingsClickedAction: function() {
@@ -65,7 +70,6 @@ Window {
                                         titleWindow: 'Настройки данных корабля'
                                         currentModel: dataShipBox.dataModel}",
                                         mainContent);
-
                     }
                 }
 
@@ -80,16 +84,14 @@ Window {
 
                         id: dataAUVBox
 
-                        dataModel: AUVDataModel {
-                            displayedData: AUVData { }
-                        }
+                        dataModel: AUVDataModel { }
 
                         dataDelegate: ContentBoxDelegate { }
                     }
 
                     onSettingsClickedAction: function() {
                         var window = Qt.createQmlObject("ContentBoxSettings {
-                                        titleWindow: 'Настройки данных корабля'
+                                        titleWindow: 'Настройки данных АНПА'
                                         currentModel: dataAUVBox.dataModel}",
                                         mainContent);
 
@@ -100,42 +102,55 @@ Window {
 
         Item {
             id: second
+
             Rectangle {
                 anchors.fill: parent
                 color: "yellow"
 
                 MContainer {
-                    id: cont
+                    id: container
                     title: "Управление АНПА"
 
-                    Rectangle {
-                        id: content1
-                        width: 200
-                        height: 250
-                        color: "pink"
+                    width: 250
+                    height: 200
 
-                        ComboBox {
-                            currentIndex: -1
-                            model: ["First", "Second", "Third"]
-                            displayText: currentIndex != -1 ? currentText : "Выбрать команду"
+                    ComboBox {
+                        id: comboBox
+                        anchors.left: parent.left
+                        anchors.right: parent.right
 
-                            anchors.left: parent.left
-                            anchors.right: parent.right
+                        currentIndex: -1
+                        model: ["First", "Second", "Third"]
+                        displayText: currentIndex != -1 ? currentText : "Выбрать команду"
+                        font.pointSize: 9
+                    }
+
+                    CheckBox {
+                        width: parent.width
+                        text: "Постоянная отправка"
+                        font.pointSize: 9
+                        anchors.top: comboBox.bottom
+                    }
+
+                    MButton {
+                        width: parent.width / 2
+
+                        anchors {
+                            bottom: parent.bottom
+                            horizontalCenter: parent.horizontalCenter
                         }
 
-                        CheckBox {
-                            text: "Постоянная отправка"
-                            anchors.centerIn: parent
-                        }
+                        text: "Отправить"
+                        font.pointSize: 9
+                    }
 
-                        MButton {
-                            text: "Отправить"
-                            anchors.bottom: content1.bottom
-                            anchors.right: content1.right
-                        }
+                    onSettingsClickedAction: function() {
+                        var window = Qt.createQmlObject("AUVControlSettings {
+                                        titleWindow: 'Настройки управления АНПА'}",
+                                        mainContent);
+
                     }
                 }
-
             }
         }
 

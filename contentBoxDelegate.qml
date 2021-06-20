@@ -5,15 +5,16 @@ import QtQml 2.12
 
 Component {
     Flow {
-        visible: chosen
+        id: flow
+        visible: model.chosen
         height: chosen == false ? 0 : implicitHeight
 
         Text {
-            text: name + ':'
+            text: model.name + ':'
             font.pointSize: 9
         }
         Text {
-            text: value + " " + units
+            text: model.value + " " + model.units
             font {
                pointSize: 9
                bold: true

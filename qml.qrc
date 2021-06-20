@@ -15,5 +15,6 @@
         <file>ContentBoxSettingsDelegate.qml</file>
         <file>Ship.qml</file>
         <file>AUVDataModel.qml</file>
+        <file>AUVControlSettings.qml</file>
     </qresource>
 </RCC>
