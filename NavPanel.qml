@@ -31,6 +31,8 @@ Item {
                  anchors.fill: parent
                  source: "images/plus.png"
              }
+
+             onClicked: controller.start_test();
         }
 
        MButton {

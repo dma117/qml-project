@@ -16,5 +16,8 @@
         <file>Ship.qml</file>
         <file>AUVDataModel.qml</file>
         <file>AUVControlSettings.qml</file>
+        <file>images/map-russian-island.jpg</file>
+        <file>images/submarine.png</file>
+        <file>images/ship.png</file>
     </qresource>
 </RCC>

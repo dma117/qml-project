@@ -1,10 +1,13 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <QThread>
 #include "movable_object.h"
 #include "shipdata.h"
 #include "auvdata.h"
 #include "auvdatacontrol.h"
+#include "worker.h"
+#include "controller.h"
 
 int main(int argc, char *argv[])
 {
@@ -26,7 +29,12 @@ int main(int argc, char *argv[])
     movable_object ship_object;
     qmlRegisterType<movable_object>("movable_object", 1, 0, "Moveable");
 
+    Controller controller;
+    qmlRegisterType<Controller>("Controller", 1, 0, "Controller");
+
     QQmlApplicationEngine engine;
+
+
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {

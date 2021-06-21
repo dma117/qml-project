@@ -9,10 +9,12 @@ CONFIG += c++11
 SOURCES += \
         auvdata.cpp \
         auvdatacontrol.cpp \
+        controller.cpp \
         factory.cpp \
         main.cpp \
         movable_object.cpp \
-        shipdata.cpp
+        shipdata.cpp \
+        worker.cpp
 
 RESOURCES += qml.qrc
 
@@ -30,6 +32,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     auvdata.h \
     auvdatacontrol.h \
+    controller.h \
     factory.h \
     movable_object.h \
-    shipdata.h
+    shipdata.h \
+    worker.h

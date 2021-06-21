@@ -6,11 +6,14 @@ import ShipData 1.0
 import movable_object 1.0;
 import AUVData 1.0
 import AUVDataControl 1.0
+import Controller 1.0
 
 Window {
     id: root
-    minimumWidth: 1080
-    minimumHeight: 720
+    maximumHeight: minimumHeight
+    maximumWidth: minimumWidth
+    minimumWidth: 1920
+    minimumHeight: 1080
     visible: true
     title: qsTr("QMLProject")
     color: "blue"
@@ -39,14 +42,14 @@ Window {
         Item {
             id: first
 
-            Rectangle {
+            Image {
                 anchors.fill: parent
-                color: "pink"
+                source: "images/map-russian-island.jpg"
 
                 MContainer {
                     x: 30
                     y: 80
-                    title: "Данные коробля"
+                    title: "Данные корабля"
 
                     ContentBox {
                         width: 250
@@ -56,13 +59,7 @@ Window {
 
                         dataModel: ShipDataModel { }
 
-                        dataDelegate: ContentBoxDelegate {
-//                           view.model.setProperty(index, "value", value * 2);
-//                           MouseArea {
-//                               anchors.fill: parent
-//                              onContainsMouseChanged: ListView.model.setProperty(index, "value", value * 2)
-//                           }
-                        }
+                        dataDelegate: ContentBoxDelegate { }
                     }
 
                     onSettingsClickedAction: function() {
@@ -74,6 +71,7 @@ Window {
                 }
 
                 MContainer {
+                    id: lel
                     x: root.width - dataAUVBox.width - 40
                     y: 80
                     title: "Данные АНПА"
@@ -97,19 +95,13 @@ Window {
 
                     }
                 }
-            }
-        }
-
-        Item {
-            id: second
-
-            Rectangle {
-                anchors.fill: parent
-                color: "yellow"
 
                 MContainer {
                     id: container
                     title: "Управление АНПА"
+
+                    x: root.width - dataAUVBox.width - 40
+                    y: lel.width + 80
 
                     width: 250
                     height: 200
@@ -151,6 +143,52 @@ Window {
 
                     }
                 }
+
+
+
+                Controller {
+                    id: controller
+                     onOperate: {
+                         shipSprite.movable_component.xPosition = xPos
+                         shipSprite.movable_component.yPosition = yPos
+                     }
+                }
+
+                PathView {
+                    z: 1
+                    id: directionLine
+                    path: Path {
+                        startX: shipSprite.xPrevPos
+                        startY: shipSprite.yPrevPos
+                        PathLine {
+                            x: shipSprite.isFirstMove ? shipSprite.xPos : shipSprite.xPrevPos + shipSprite.width / 2;
+                            y: shipSprite.isFirstMove ? shipSprite.yPos : shipSprite.yPrevPos - shipSprite.height / 2;
+                        }
+                    }
+                    model: 50
+                    delegate: Rectangle {
+                        width: 4; height: 4
+                        color: "green"
+                    }
+                }
+
+                Ship {
+                    id: shipSprite
+                    width: 100
+                    height: 100
+                    x: 540
+                    y: 360
+                    onPositionChanged: directionLine.pathChanged()
+                }
+            }
+        }
+
+        Item {
+            id: second
+
+            Rectangle {
+                anchors.fill: parent
+                color: "yellow"
             }
         }
 
@@ -160,43 +198,7 @@ Window {
                anchors.fill: parent
                color: "brown"
 
-               MouseArea {
-                   id: mouse
-                   anchors.fill: parent
 
-                   onClicked: {
-                       shipSprite.movable_component.xPosition = mouseX
-                       shipSprite.movable_component.yPosition = mouseY
-                   }
-               }
-
-               PathView {
-                   z: 1
-                   id: directionLine
-                   path: Path {
-                       startX: shipSprite.xPrevPos
-                       startY: shipSprite.yPrevPos
-                       PathLine {
-                           x: shipSprite.xPos;
-                           y: shipSprite.yPos;
-                       }
-                   }
-                   model: 50
-                   delegate: Rectangle {
-                       width: 4; height: 4
-                       color: "green"
-                   }
-               }
-
-
-               Ship {
-                   id: shipSprite
-                   width: 100
-                   height: 100
-                   x: 150
-                   y: 150
-                   onPositionChanged: directionLine.pathChanged()
-               }
            }
        }
     }
