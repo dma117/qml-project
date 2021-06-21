@@ -21,8 +21,8 @@ signals:
     void positionChanged(float xPos, float yPos);
 
 private:
-    float xPositions[5] = {540, 600, 700, 570, 540};
-    float yPositions[5] = {360, 400, 280, 380, 360};
+    float xPositions[5] = { 540, 1000, 540, 540, 550 };
+    float yPositions[5] = { 360, 360, 360, 600, 590 };
     uint position = 0;
     QThread thread_;
 };

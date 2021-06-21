@@ -144,8 +144,6 @@ Window {
                     }
                 }
 
-
-
                 Controller {
                     id: controller
                      onOperate: {
@@ -158,17 +156,34 @@ Window {
                     z: 1
                     id: directionLine
                     path: Path {
-                        startX: shipSprite.xPrevPos
-                        startY: shipSprite.yPrevPos
+                        startX: shipSprite.xPrevPos + shipSprite.width / 2;
+                        startY: shipSprite.yPrevPos + shipSprite.height / 2;
                         PathLine {
-                            x: shipSprite.isFirstMove ? shipSprite.xPos : shipSprite.xPrevPos + shipSprite.width / 2;
-                            y: shipSprite.isFirstMove ? shipSprite.yPos : shipSprite.yPrevPos - shipSprite.height / 2;
+                            x: shipSprite.xPos + shipSprite.width / 2;
+                            y: shipSprite.yPos + shipSprite.height / 2;
                         }
                     }
-                    model: 50
+
+                    model: modelCount()
+
+                   function modelCount() {
+                        var yCenter = shipSprite.height / 2;
+                        var xCenter = shipSprite.width / 2;
+
+                        var xCurrent = shipSprite.xPos + shipSprite.width / 2;
+                        var yCurrent = shipSprite.yPos + shipSprite.height / 2;
+
+                        var deltaX = Math.abs(xCurrent - (shipSprite.xPrevPos + xCenter));
+                        var deltaY = Math.abs(yCurrent - (shipSprite.yPrevPos + yCenter));
+
+                        var result = Math.ceil(Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2)) / 15);
+                       console.log(result);
+                       return result;
+                    }
+
                     delegate: Rectangle {
-                        width: 4; height: 4
-                        color: "green"
+                        width: 12; height: 12
+                        color: "red"
                     }
                 }
 
@@ -178,7 +193,6 @@ Window {
                     height: 100
                     x: 540
                     y: 360
-                    onPositionChanged: directionLine.pathChanged()
                 }
             }
         }
@@ -188,7 +202,7 @@ Window {
 
             Rectangle {
                 anchors.fill: parent
-                color: "yellow"
+                color: "white"
             }
         }
 
@@ -196,7 +210,7 @@ Window {
            id: third
            Rectangle {
                anchors.fill: parent
-               color: "brown"
+               color: "blue"
 
 
            }

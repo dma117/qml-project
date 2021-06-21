@@ -5,7 +5,6 @@ Rectangle {
 
     property var movable_component: move_component
     color: "transparent"
-    signal positionChanged;
 
     property var xPos: 540
     property var yPos: 360

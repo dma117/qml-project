@@ -15,7 +15,7 @@ void Worker::run()
 {
     while(1) {
         emit positionChanged(xPositions[position], yPositions[position]);
-        position = (position + 1) % 6;
+        position = (position + 1) % 5;
         thread_.sleep(4);
     }
 }

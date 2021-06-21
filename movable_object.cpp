@@ -14,8 +14,9 @@ float movable_object::yPosition() const
     return m_yPosition;
 }
 
-void movable_object::setXPosition(float xPos)
-{
+void movable_object::setXPosition(float xPos) {
+    setXPrev(m_xPosition);
+
     if (xPos == m_xPosition)
         return;
 
@@ -26,6 +27,8 @@ void movable_object::setXPosition(float xPos)
 }
 
 void movable_object::setYPosition(float yPos) {
+    setYPrev(m_yPosition);
+
     if (yPos == m_yPosition)
         return;
 
@@ -44,6 +47,7 @@ void movable_object::setXPrev(float newXPrev)
 {
     if (qFuzzyCompare(m_xPrev, newXPrev))
         return;
+
     m_xPrev = newXPrev;
 
     emit xPrevChanged(m_xPrev);
