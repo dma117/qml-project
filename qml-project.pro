@@ -10,7 +10,6 @@ SOURCES += \
         auvdata.cpp \
         auvdatacontrol.cpp \
         controller.cpp \
-        factory.cpp \
         main.cpp \
         movable_object.cpp \
         shipdata.cpp \
@@ -33,7 +32,6 @@ HEADERS += \
     auvdata.h \
     auvdatacontrol.h \
     controller.h \
-    factory.h \
     movable_object.h \
     shipdata.h \
     worker.h

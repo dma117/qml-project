@@ -182,7 +182,7 @@ Window {
                     }
 
                     delegate: Rectangle {
-                        width: 12; height: 12
+                        width: 10; height: 10
                         color: "red"
                     }
                 }
